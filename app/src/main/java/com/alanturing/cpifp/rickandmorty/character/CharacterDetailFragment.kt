@@ -1,4 +1,4 @@
-package com.alanturing.cpifp.rickandmorty.characterdetail
+package com.alanturing.cpifp.rickandmorty.character
 
 import android.os.Bundle
 import android.view.LayoutInflater
