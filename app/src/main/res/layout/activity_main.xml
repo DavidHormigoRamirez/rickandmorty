@@ -10,13 +10,9 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:navGraph="@navigation/main_navigation" />
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:menu="@menu/bottom_nav_menu"
-        android:layout_gravity="bottom"/>
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/character" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

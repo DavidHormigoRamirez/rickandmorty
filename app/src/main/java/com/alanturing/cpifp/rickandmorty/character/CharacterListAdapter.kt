@@ -11,7 +11,8 @@ import coil.load
 import com.alanturing.cpifp.rickandmorty.R
 import com.alanturing.cpifp.rickandmorty.databinding.CharacterItemBinding
 
-class CharacterListAdapter(private val context: Context) :
+class CharacterListAdapter(private val context: Context,
+    private val toDetail: (id:Long,v:View)->Unit) :
     ListAdapter<CharacterDetailUi, CharacterListAdapter.CharacterCardViewHolder>(CharacterDiffCallback) {
 
     inner class CharacterCardViewHolder(private val binding: CharacterItemBinding):ViewHolder(binding.root) {
@@ -20,8 +21,9 @@ class CharacterListAdapter(private val context: Context) :
             //binding.characterImage = data.image
             binding.characterName.text = data.name
             binding.characterImage.load(data.image)
-
-
+            binding.root.setOnClickListener {
+                toDetail(data.id,binding.root)
+            }
         }
     }
 

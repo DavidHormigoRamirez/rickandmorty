@@ -15,12 +15,12 @@ data class CharacterListInfo(
 fun List<CharacterNetwork>.asCharacter():List<com.alanturing.cpifp.rickandmorty.data.model.CharacterModel> {
     val list = this.map {
         com.alanturing.cpifp.rickandmorty.data.model.CharacterModel(
-            it.id,
-            it.name,
-            it.status,
-            it.species,
-            it.name,
-            it.image
+            id = it.id,
+            name = it.name,
+            status = it.status,
+            gender = it.gender,
+            image = it.image,
+            species = it.species
         )
     }
     return list

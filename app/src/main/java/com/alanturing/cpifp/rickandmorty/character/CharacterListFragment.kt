@@ -9,6 +9,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.NavOptions
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.alanturing.cpifp.rickandmorty.databinding.FragmentCharacterListBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -29,7 +32,7 @@ class CharacterListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val recyclerView = binding.characterRv
-        recyclerView.adapter = CharacterListAdapter(requireContext())
+        recyclerView.adapter = CharacterListAdapter(requireContext(),::toDetail)
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.characters.collect {
@@ -40,6 +43,10 @@ class CharacterListFragment : Fragment() {
                 }
             }
         }
+    }
+    private fun toDetail(id:Long,view:View) {
+        val action = CharacterListFragmentDirections.actionCharacterListFragmentToCharacterDetailFragment(id)
+        view.findNavController().navigate(action)
     }
 }
 

@@ -7,5 +7,5 @@ interface CharacterRepository {
 
     fun observeCharacters(): Flow<Result<List<CharacterModel>>>
     suspend fun refreshCharacters()
-    suspend fun readCharacter(id:Long): CharacterModel
+    suspend fun readCharacter(id:Long): Result<CharacterModel>
 }

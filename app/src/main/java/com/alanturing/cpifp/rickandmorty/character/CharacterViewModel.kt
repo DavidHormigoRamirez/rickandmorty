@@ -37,5 +37,20 @@ class CharacterViewModel @Inject constructor(): ViewModel() {
             characterRepository.refreshCharacters()
         }
     }
+    suspend fun getCharacter(id:Long):CharacterDetailUi? {
+        val result = characterRepository.readCharacter(id)
+        return if (result is Result.Success)
+            CharacterDetailUi(
+                id = result.data.id,
+                name = result.data.name,
+                image = result.data.image,
+                species = result.data.species,
+                gender = result.data.gender,
+                status = result.data.status
+            )
+        else null
+
+
+    }
 
 }

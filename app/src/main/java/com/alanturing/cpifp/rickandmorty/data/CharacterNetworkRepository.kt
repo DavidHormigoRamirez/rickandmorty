@@ -24,7 +24,21 @@ class CharacterNetworkRepository @Inject constructor(private val api: RickAndMor
         }
     }
 
-    override suspend fun readCharacter(id:Long): CharacterModel {
-        TODO("Not yet implemented")
+    override suspend fun readCharacter(id:Long): Result<CharacterModel> {
+        val response = api.getSingleCharacter(id)
+
+        return if (response.isSuccessful) {
+            Result.Success<CharacterModel>(CharacterModel(
+                id = response.body()!!.id,
+                name = response.body()!!.name,
+                status = response.body()!!.status,
+                image = response.body()!!.image,
+                gender = response.body()!!.gender,
+                species = response.body()!!.species
+
+            ))
+        } else {
+            Result.Error("No encontrado")
+        }
     }
 }

@@ -12,7 +12,7 @@ class CharacterDefaultRepository(private val networkRepository: CharacterReposit
        networkRepository.refreshCharacters()
     }
 
-    override suspend fun readCharacter(id:Long): CharacterModel {
+    override suspend fun readCharacter(id:Long): Result<CharacterModel> {
         return networkRepository.readCharacter(id)
     }
 }

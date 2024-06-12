@@ -1,14 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".character.CharacterDetailFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    >
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/detail_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Character Detail Fragment" />
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <ImageView
+        android:id="@+id/character_image"
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
 
-</FrameLayout>
+        app:layout_constraintTop_toBottomOf="@id/detail_toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginVertical="8dp"
+        android:contentDescription="@string/imagen_caracter" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/character_attributes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/character_image"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginVertical="8dp">
+    <com.google.android.material.chip.Chip
+        android:id="@+id/character_species"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    <com.google.android.material.chip.Chip
+        android:id="@+id/character_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/character_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.chip.ChipGroup>
+</androidx.constraintlayout.widget.ConstraintLayout>
