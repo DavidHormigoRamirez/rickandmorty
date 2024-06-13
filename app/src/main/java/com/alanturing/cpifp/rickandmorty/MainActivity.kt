@@ -1,4 +1,4 @@
-package com.alanturing.cpifp.rickandmorty.ui
+package com.alanturing.cpifp.rickandmorty
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

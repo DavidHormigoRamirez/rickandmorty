@@ -1,4 +1,4 @@
-package com.alanturing.cpifp.rickandmorty.character
+package com.alanturing.cpifp.rickandmorty.ui.character.detail
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,6 +13,8 @@ import androidx.navigation.fragment.navArgs
 import coil.load
 import com.alanturing.cpifp.rickandmorty.R
 import com.alanturing.cpifp.rickandmorty.databinding.FragmentCharacterDetailBinding
+import com.alanturing.cpifp.rickandmorty.ui.character.CharacterDetailUi
+import com.alanturing.cpifp.rickandmorty.ui.character.CharacterViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

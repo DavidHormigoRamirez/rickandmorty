@@ -1,4 +1,4 @@
-package com.alanturing.cpifp.rickandmorty.character
+package com.alanturing.cpifp.rickandmorty.ui.character
 
 import com.alanturing.cpifp.rickandmorty.data.model.CharacterModel
 

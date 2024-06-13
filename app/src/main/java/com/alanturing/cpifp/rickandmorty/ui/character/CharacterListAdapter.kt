@@ -1,4 +1,4 @@
-package com.alanturing.cpifp.rickandmorty.character
+package com.alanturing.cpifp.rickandmorty.ui.character
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -13,11 +13,13 @@ import com.alanturing.cpifp.rickandmorty.databinding.CharacterItemBinding
 
 class CharacterListAdapter(private val context: Context,
     private val toDetail: (id:Long,v:View)->Unit) :
-    ListAdapter<CharacterDetailUi, CharacterListAdapter.CharacterCardViewHolder>(CharacterDiffCallback) {
+    ListAdapter<CharacterDetailUi, CharacterListAdapter.CharacterCardViewHolder>(
+        CharacterDiffCallback
+    ) {
 
     inner class CharacterCardViewHolder(private val binding: CharacterItemBinding):ViewHolder(binding.root) {
 
-        fun bind(data:CharacterDetailUi) {
+        fun bind(data: CharacterDetailUi) {
             //binding.characterImage = data.image
             binding.characterName.text = data.name
             binding.characterImage.load(data.image)

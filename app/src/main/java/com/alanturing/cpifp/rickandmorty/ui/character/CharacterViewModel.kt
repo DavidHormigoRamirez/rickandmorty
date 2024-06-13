@@ -1,4 +1,4 @@
-package com.alanturing.cpifp.rickandmorty.character
+package com.alanturing.cpifp.rickandmorty.ui.character
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -37,7 +37,7 @@ class CharacterViewModel @Inject constructor(): ViewModel() {
             characterRepository.refreshCharacters()
         }
     }
-    suspend fun getCharacter(id:Long):CharacterDetailUi? {
+    suspend fun getCharacter(id:Long): CharacterDetailUi? {
         val result = characterRepository.readCharacter(id)
         return if (result is Result.Success)
             CharacterDetailUi(
