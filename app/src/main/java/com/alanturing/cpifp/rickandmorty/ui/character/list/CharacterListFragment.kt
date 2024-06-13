@@ -1,4 +1,4 @@
-package com.alanturing.cpifp.rickandmorty.ui.character
+package com.alanturing.cpifp.rickandmorty.ui.character.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,10 +9,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.alanturing.cpifp.rickandmorty.databinding.FragmentCharacterListBinding
+import com.alanturing.cpifp.rickandmorty.ui.character.CharacterViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

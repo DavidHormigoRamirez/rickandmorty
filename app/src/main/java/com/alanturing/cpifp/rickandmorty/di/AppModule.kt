@@ -2,7 +2,6 @@ package com.alanturing.cpifp.rickandmorty.di
 
 import android.content.Context
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import com.alanturing.cpifp.rickandmorty.data.CharacterDefaultRepository
 import com.alanturing.cpifp.rickandmorty.data.network.CharacterNetworkRepository
 import com.alanturing.cpifp.rickandmorty.data.CharacterRepository
@@ -22,7 +21,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object NetworkModule {
+object AppModule {
     @Qualifier
     @Retention(AnnotationRetention.RUNTIME)
     annotation class NetworkRepository

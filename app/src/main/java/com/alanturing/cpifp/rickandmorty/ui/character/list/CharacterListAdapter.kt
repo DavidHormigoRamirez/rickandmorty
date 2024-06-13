@@ -1,4 +1,4 @@
-package com.alanturing.cpifp.rickandmorty.ui.character
+package com.alanturing.cpifp.rickandmorty.ui.character.list
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import coil.load
-import com.alanturing.cpifp.rickandmorty.R
 import com.alanturing.cpifp.rickandmorty.databinding.CharacterItemBinding
+import com.alanturing.cpifp.rickandmorty.ui.character.CharacterDetailUi
 
 class CharacterListAdapter(private val context: Context,
     private val toDetail: (id:Long,v:View)->Unit) :
