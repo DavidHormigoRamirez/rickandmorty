@@ -1,6 +1,9 @@
 package com.alanturing.cpifp.rickandmorty.di
 
 import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.room.Room
 import com.alanturing.cpifp.rickandmorty.data.CharacterDefaultRepository
 import com.alanturing.cpifp.rickandmorty.data.network.CharacterNetworkRepository
@@ -71,10 +74,19 @@ object AppModule {
 
     @Singleton
     @Provides
+    fun getNetworkCapabilities(@ApplicationContext context:Context): NetworkCapabilities? {
+        val connectivityManager = context.getSystemService(ConnectivityManager::class.java)
+        val currentNetwork = connectivityManager.activeNetwork
+        return connectivityManager.getNetworkCapabilities(currentNetwork)
+    }
+
+    @Singleton
+    @Provides
     fun provideDefaultRepository(
         @NetworkRepository networkRepository: CharacterRepository,
-        @LocalRepository localRepository: CharacterRepository
+        @LocalRepository localRepository: CharacterRepository,
+        networkCapabilities: NetworkCapabilities?
     ):CharacterRepository {
-        return CharacterDefaultRepository(networkRepository,localRepository)
+        return CharacterDefaultRepository(networkRepository,localRepository,networkCapabilities)
     }
 }

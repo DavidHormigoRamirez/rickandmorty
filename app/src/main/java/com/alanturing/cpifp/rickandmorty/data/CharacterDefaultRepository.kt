@@ -1,5 +1,7 @@
 package com.alanturing.cpifp.rickandmorty.data
 
+import android.net.NetworkCapabilities
+import android.net.NetworkCapabilities.NET_CAPABILITY_VALIDATED
 import com.alanturing.cpifp.rickandmorty.data.local.CharacterLocalRepository
 import com.alanturing.cpifp.rickandmorty.data.model.CharacterModel
 import kotlinx.coroutines.Dispatchers
@@ -8,7 +10,8 @@ import kotlinx.coroutines.withContext
 
 class CharacterDefaultRepository(
     private val networkRepository: CharacterRepository,
-    private val localRepository: CharacterRepository
+    private val localRepository: CharacterRepository,
+    private val networkCapabilities: NetworkCapabilities?
 ): CharacterRepository {
     override suspend fun getCharacters(): Result<List<CharacterModel>> {
         withContext(Dispatchers.IO) {
@@ -26,8 +29,11 @@ class CharacterDefaultRepository(
     }
 
     override suspend fun refreshCharacters() {
-       //networkRepository.refreshCharacters()
-        updateCharactersFromRemote()
+        networkCapabilities?.let {
+            if (it.hasCapability(NET_CAPABILITY_VALIDATED)) {
+                updateCharactersFromRemote()
+            }
+        }
 
     }
 
